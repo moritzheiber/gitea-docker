@@ -1,0 +1,20 @@
+version: '2.3'
+services:
+  gitea:
+    image: "gitea"
+    container_name: "gitea"
+    network_mode: "bridge"
+    environment:
+      GITEA_DOMAIN: "localhost"
+      GITEA_PORT: 8080
+      GITEA_SSH_PORT: 22
+      GITEA_SECRET_KEY: "very_secret_key"
+    ports:
+      - "8080:8080"
+    volumes:
+      - gitea-repos:/gitea/repositories
+      - gitea-data:/gitea/data
+
+volumes:
+  gitea-repos:
+  gitea-data:

@@ -1,0 +1,63 @@
+RUN_USER = gitea
+RUN_MODE = prod
+
+[server]
+PROTOCOL = http
+APP_NAME = Gitea
+DOMAIN = {{ env "GITEA_DOMAIN" | trimSpace }}
+SSH_DOMAIN = {{ env "GITEA_DOMAIN" | trimSpace }}
+HTTP_PORT = {{ env "GITEA_PORT" | trimSpace }}
+START_SSH_SERVER = true
+SSH_LISTEN_PORT = {{ env "GITEA_SSH_PORT" | trimSpace }}
+SSH_PORT = {{ env "GITEA_SSH_PORT" | trimSpace }}
+ROOT_URL = https://%(DOMAIN)s/
+DISABLE_SSH = false
+APP_DATA_PATH = {{ env "GITEA_WORK_DIR" | trimSpace }}/data
+
+[repository]
+ROOT = {{ env "GITEA_WORK_DIR" | trimSpace }}/repositories
+FORCE_PRIVATE = true
+
+[ssh.minimum_key_sizes]
+RSA = 4096
+
+[database]
+DB_TYPE = sqlite3
+PATH = {{ env "GITEA_WORK_DIR" | trimSpace }}/data/gitea.db
+
+[repository.upload]
+TEMP_PATH = {{ env "GITEA_WORK_DIR" | trimSpace }}/data/tmp/uploads
+
+[release.attachment]
+PATH = {{ env "GITEA_WORK_DIR" | trimSpace }}/data/attachments
+
+[admin]
+DISABLE_REGULAR_ORG_CREATION = true
+
+[security]
+INSTALL_LOCK = {{ env "INSTALL_LOCK" | trimSpace }}
+SECRET_KEY = {{ env "GITEA_SECRET_KEY" | trimSpace }}
+COOKIE_SECURE = true
+
+[service]
+DISABLE_REGISTRATION = true
+REQUIRE_SIGNIN_VIEW = true
+
+[webhook]
+TYPES = gitea, slack
+SKIP_TLS_VERIFY = false
+
+[picture]
+AVATAR_UPLOAD_PATH = {{ env "GITEA_WORK_DIR" | trimSpace }}/data/avatars
+
+[attachment]
+PATH = {{ env "GITEA_WORK_DIR" | trimSpace }}/data/attachments
+
+[picture]
+AVATAR_UPLOAD_PATH = {{ env "GITEA_WORK_DIR" | trimSpace }}/data/avatars
+
+[log]
+ROOT_PATH = /tmp
+; Either "Trace", "Info", "Warn", "Error", "Fatal", default is "Trace"
+LEVEL = Info
+MODE = console
