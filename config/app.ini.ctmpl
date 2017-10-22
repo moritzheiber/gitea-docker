@@ -7,11 +7,11 @@ APP_NAME = Gitea
 DOMAIN = {{ env "GITEA_DOMAIN" | trimSpace }}
 SSH_DOMAIN = {{ env "GITEA_DOMAIN" | trimSpace }}
 HTTP_PORT = {{ env "GITEA_PORT" | trimSpace }}
-START_SSH_SERVER = true
+START_SSH_SERVER = {{ env "GITEA_START_SSH_SERVER" | trimSpace }}
 SSH_LISTEN_PORT = {{ env "GITEA_SSH_PORT" | trimSpace }}
 SSH_PORT = {{ env "GITEA_SSH_PORT" | trimSpace }}
 ROOT_URL = https://%(DOMAIN)s/
-DISABLE_SSH = false
+DISABLE_SSH = {{ env "GITEA_DISABLE_SSH" | trimSpace }}
 APP_DATA_PATH = {{ env "GITEA_WORK_DIR" | trimSpace }}/data
 
 [repository]
