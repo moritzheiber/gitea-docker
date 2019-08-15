@@ -1,14 +1,14 @@
 FROM moritzheiber/alpine-base:latest
 LABEL maintainer="Moritz Heiber <hello@heiber.im>"
 
-ENV GITEA_VERSION="1.8.3" \
-  GITEA_SHA256="7bb28b21cce4bdf0a24e6f6b21c064afa56d84904052dd55afdf59c419d49988" \
+ENV GITEA_VERSION="1.9.1" \
+  GITEA_SHA256="2afe85726227e0c742ae73bb40fc49c61cf7e32b9992edb0b439a6e866699fb7" \
   GITEA_WORK_DIR="/gitea" \
   USERNAME="gitea"
 
 RUN apk add --no-cache curl ca-certificates bash git tzdata openssh sqlite && \
-  curl -Lo /usr/bin/gitea https://github.com/go-gitea/gitea/releases/download/v${GITEA_VERSION}/gitea-${GITEA_VERSION}-linux-amd64 && \
-  echo "${GITEA_SHA256}  /usr/bin/gitea" | sha256sum -c - && \
+  curl -Lo /usr/bin/gitea https://dl.gitea.io/gitea/${GITEA_VERSION}/gitea-${GITEA_VERSION}-linux-amd64 && \
+  echo "${GITEA_SHA256}  /usr/bin/gitea" | sha256sum -c -s -w - && \
   chmod 0755 /usr/bin/gitea && \
   addgroup -S ${USERNAME} && \
   adduser -h ${GITEA_WORK_DIR} -s /bin/bash -SD ${USERNAME} && \
