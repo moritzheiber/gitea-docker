@@ -1,8 +1,8 @@
 FROM moritzheiber/alpine-base:latest
 LABEL maintainer="Moritz Heiber <hello@heiber.im>"
 
-ENV GITEA_VERSION="1.9.4" \
-  GITEA_SHA256="5620c65d553c33b7c32cf058ec86d0ef2c7b6bc7ed2ebc3127448cea1370eb04" \
+ENV GITEA_VERSION="1.10.3" \
+  GITEA_SHA256="e4e393da9f3dbcc6b200a58c0ba8c19ef02346ca24d6b273748b8346313053d0" \
   GITEA_WORK_DIR="/gitea" \
   USERNAME="gitea"
 
