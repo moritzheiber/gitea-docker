@@ -10,7 +10,7 @@ GEM
     docker-compose (1.1.7)
       backticks (~> 1.0)
     excon (0.71.0)
-    json (2.1.0)
+    json (2.3.1)
     multi_json (1.12.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
